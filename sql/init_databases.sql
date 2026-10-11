@@ -1,0 +1,20 @@
+CREATE DATABASE dwh;
+CREATE DATABASE airflow;
+CREATE DATABASE mlflow;
+
+CREATE USER dwh WITH PASSWORD 'dwh';
+CREATE USER airflow WITH PASSWORD 'airflow';
+CREATE USER mlflow WITH PASSWORD 'mlflow';
+
+GRANT ALL PRIVILEGES ON DATABASE dwh TO dwh;
+GRANT ALL PRIVILEGES ON DATABASE airflow TO airflow;
+GRANT ALL PRIVILEGES ON DATABASE mlflow TO mlflow;
+
+\c dwh
+GRANT ALL ON SCHEMA public TO dwh;
+
+\c airflow
+GRANT ALL ON SCHEMA public TO airflow;
+
+\c mlflow
+GRANT ALL ON SCHEMA public TO mlflow;

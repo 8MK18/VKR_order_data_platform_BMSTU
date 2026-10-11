@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.pytest_cache/
+mlruns/
+models/*.joblib
+data/generated/
+logs/
+airflow/logs/
+.idea/
+.vscode/

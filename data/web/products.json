@@ -1,0 +1,352 @@
+[
+  {
+    "product_id": 1,
+    "product_name": "Product 1",
+    "category": "electronics",
+    "web_rating": 4.35,
+    "web_updated_at": "2026-10-10T20:01:38.970573"
+  },
+  {
+    "product_id": 2,
+    "product_name": "Product 2",
+    "category": "home",
+    "web_rating": 3.25,
+    "web_updated_at": "2026-10-10T20:01:38.970592"
+  },
+  {
+    "product_id": 3,
+    "product_name": "Product 3",
+    "category": "office",
+    "web_rating": 3.7,
+    "web_updated_at": "2026-10-10T20:01:38.970597"
+  },
+  {
+    "product_id": 4,
+    "product_name": "Product 4",
+    "category": "sport",
+    "web_rating": 3.6,
+    "web_updated_at": "2026-10-10T20:01:38.970602"
+  },
+  {
+    "product_id": 5,
+    "product_name": "Product 5",
+    "category": "accessories",
+    "web_rating": 4.53,
+    "web_updated_at": "2026-10-10T20:01:38.970606"
+  },
+  {
+    "product_id": 6,
+    "product_name": "Product 6",
+    "category": "electronics",
+    "web_rating": 4.42,
+    "web_updated_at": "2026-10-10T20:01:38.970610"
+  },
+  {
+    "product_id": 7,
+    "product_name": "Product 7",
+    "category": "home",
+    "web_rating": 4.81,
+    "web_updated_at": "2026-10-10T20:01:38.970614"
+  },
+  {
+    "product_id": 8,
+    "product_name": "Product 8",
+    "category": "office",
+    "web_rating": 3.36,
+    "web_updated_at": "2026-10-10T20:01:38.970622"
+  },
+  {
+    "product_id": 9,
+    "product_name": "Product 9",
+    "category": "sport",
+    "web_rating": 3.96,
+    "web_updated_at": "2026-10-10T20:01:38.970627"
+  },
+  {
+    "product_id": 10,
+    "product_name": "Product 10",
+    "category": "accessories",
+    "web_rating": 3.25,
+    "web_updated_at": "2026-10-10T20:01:38.970630"
+  },
+  {
+    "product_id": 11,
+    "product_name": "Product 11",
+    "category": "electronics",
+    "web_rating": 3.59,
+    "web_updated_at": "2026-10-10T20:01:38.970633"
+  },
+  {
+    "product_id": 12,
+    "product_name": "Product 12",
+    "category": "home",
+    "web_rating": 4.11,
+    "web_updated_at": "2026-10-10T20:01:38.970642"
+  },
+  {
+    "product_id": 13,
+    "product_name": "Product 13",
+    "category": "office",
+    "web_rating": 3.25,
+    "web_updated_at": "2026-10-10T20:01:38.970645"
+  },
+  {
+    "product_id": 14,
+    "product_name": "Product 14",
+    "category": "sport",
+    "web_rating": 3.56,
+    "web_updated_at": "2026-10-10T20:01:38.970648"
+  },
+  {
+    "product_id": 15,
+    "product_name": "Product 15",
+    "category": "accessories",
+    "web_rating": 4.37,
+    "web_updated_at": "2026-10-10T20:01:38.970651"
+  },
+  {
+    "product_id": 16,
+    "product_name": "Product 16",
+    "category": "electronics",
+    "web_rating": 4.18,
+    "web_updated_at": "2026-10-10T20:01:38.970654"
+  },
+  {
+    "product_id": 17,
+    "product_name": "Product 17",
+    "category": "home",
+    "web_rating": 3.6,
+    "web_updated_at": "2026-10-10T20:01:38.970657"
+  },
+  {
+    "product_id": 18,
+    "product_name": "Product 18",
+    "category": "office",
+    "web_rating": 4.26,
+    "web_updated_at": "2026-10-10T20:01:38.970664"
+  },
+  {
+    "product_id": 19,
+    "product_name": "Product 19",
+    "category": "sport",
+    "web_rating": 4.66,
+    "web_updated_at": "2026-10-10T20:01:38.970667"
+  },
+  {
+    "product_id": 20,
+    "product_name": "Product 20",
+    "category": "accessories",
+    "web_rating": 3.21,
+    "web_updated_at": "2026-10-10T20:01:38.970670"
+  },
+  {
+    "product_id": 21,
+    "product_name": "Product 21",
+    "category": "electronics",
+    "web_rating": 4.65,
+    "web_updated_at": "2026-10-10T20:01:38.970673"
+  },
+  {
+    "product_id": 22,
+    "product_name": "Product 22",
+    "category": "home",
+    "web_rating": 4.46,
+    "web_updated_at": "2026-10-10T20:01:38.970676"
+  },
+  {
+    "product_id": 23,
+    "product_name": "Product 23",
+    "category": "office",
+    "web_rating": 3.81,
+    "web_updated_at": "2026-10-10T20:01:38.970679"
+  },
+  {
+    "product_id": 24,
+    "product_name": "Product 24",
+    "category": "sport",
+    "web_rating": 3.48,
+    "web_updated_at": "2026-10-10T20:01:38.970682"
+  },
+  {
+    "product_id": 25,
+    "product_name": "Product 25",
+    "category": "accessories",
+    "web_rating": 4.92,
+    "web_updated_at": "2026-10-10T20:01:38.970685"
+  },
+  {
+    "product_id": 26,
+    "product_name": "Product 26",
+    "category": "electronics",
+    "web_rating": 3.81,
+    "web_updated_at": "2026-10-10T20:01:38.970688"
+  },
+  {
+    "product_id": 27,
+    "product_name": "Product 27",
+    "category": "home",
+    "web_rating": 3.37,
+    "web_updated_at": "2026-10-10T20:01:38.970691"
+  },
+  {
+    "product_id": 28,
+    "product_name": "Product 28",
+    "category": "office",
+    "web_rating": 3.37,
+    "web_updated_at": "2026-10-10T20:01:38.970694"
+  },
+  {
+    "product_id": 29,
+    "product_name": "Product 29",
+    "category": "sport",
+    "web_rating": 4.73,
+    "web_updated_at": "2026-10-10T20:01:38.970697"
+  },
+  {
+    "product_id": 30,
+    "product_name": "Product 30",
+    "category": "accessories",
+    "web_rating": 4.29,
+    "web_updated_at": "2026-10-10T20:01:38.970700"
+  },
+  {
+    "product_id": 31,
+    "product_name": "Product 31",
+    "category": "electronics",
+    "web_rating": 4.65,
+    "web_updated_at": "2026-10-10T20:01:38.970708"
+  },
+  {
+    "product_id": 32,
+    "product_name": "Product 32",
+    "category": "home",
+    "web_rating": 4.51,
+    "web_updated_at": "2026-10-10T20:01:38.970711"
+  },
+  {
+    "product_id": 33,
+    "product_name": "Product 33",
+    "category": "office",
+    "web_rating": 4.17,
+    "web_updated_at": "2026-10-10T20:01:38.970714"
+  },
+  {
+    "product_id": 34,
+    "product_name": "Product 34",
+    "category": "sport",
+    "web_rating": 4.95,
+    "web_updated_at": "2026-10-10T20:01:38.970718"
+  },
+  {
+    "product_id": 35,
+    "product_name": "Product 35",
+    "category": "accessories",
+    "web_rating": 3.88,
+    "web_updated_at": "2026-10-10T20:01:38.970721"
+  },
+  {
+    "product_id": 36,
+    "product_name": "Product 36",
+    "category": "electronics",
+    "web_rating": 4.19,
+    "web_updated_at": "2026-10-10T20:01:38.970724"
+  },
+  {
+    "product_id": 37,
+    "product_name": "Product 37",
+    "category": "home",
+    "web_rating": 4.69,
+    "web_updated_at": "2026-10-10T20:01:38.970727"
+  },
+  {
+    "product_id": 38,
+    "product_name": "Product 38",
+    "category": "office",
+    "web_rating": 4.31,
+    "web_updated_at": "2026-10-10T20:01:38.970730"
+  },
+  {
+    "product_id": 39,
+    "product_name": "Product 39",
+    "category": "sport",
+    "web_rating": 4.75,
+    "web_updated_at": "2026-10-10T20:01:38.970733"
+  },
+  {
+    "product_id": 40,
+    "product_name": "Product 40",
+    "category": "accessories",
+    "web_rating": 4.24,
+    "web_updated_at": "2026-10-10T20:01:38.970735"
+  },
+  {
+    "product_id": 41,
+    "product_name": "Product 41",
+    "category": "electronics",
+    "web_rating": 4.47,
+    "web_updated_at": "2026-10-10T20:01:38.970738"
+  },
+  {
+    "product_id": 42,
+    "product_name": "Product 42",
+    "category": "home",
+    "web_rating": 3.28,
+    "web_updated_at": "2026-10-10T20:01:38.970742"
+  },
+  {
+    "product_id": 43,
+    "product_name": "Product 43",
+    "category": "office",
+    "web_rating": 3.61,
+    "web_updated_at": "2026-10-10T20:01:38.970745"
+  },
+  {
+    "product_id": 44,
+    "product_name": "Product 44",
+    "category": "sport",
+    "web_rating": 3.72,
+    "web_updated_at": "2026-10-10T20:01:38.970748"
+  },
+  {
+    "product_id": 45,
+    "product_name": "Product 45",
+    "category": "accessories",
+    "web_rating": 3.34,
+    "web_updated_at": "2026-10-10T20:01:38.970755"
+  },
+  {
+    "product_id": 46,
+    "product_name": "Product 46",
+    "category": "electronics",
+    "web_rating": 3.62,
+    "web_updated_at": "2026-10-10T20:01:38.970758"
+  },
+  {
+    "product_id": 47,
+    "product_name": "Product 47",
+    "category": "home",
+    "web_rating": 3.38,
+    "web_updated_at": "2026-10-10T20:01:38.970761"
+  },
+  {
+    "product_id": 48,
+    "product_name": "Product 48",
+    "category": "office",
+    "web_rating": 3.7,
+    "web_updated_at": "2026-10-10T20:01:38.970764"
+  },
+  {
+    "product_id": 49,
+    "product_name": "Product 49",
+    "category": "sport",
+    "web_rating": 4.34,
+    "web_updated_at": "2026-10-10T20:01:38.970773"
+  },
+  {
+    "product_id": 50,
+    "product_name": "Product 50",
+    "category": "accessories",
+    "web_rating": 3.86,
+    "web_updated_at": "2026-10-10T20:01:38.970782"
+  }
+]

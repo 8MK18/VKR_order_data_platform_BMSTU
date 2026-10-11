@@ -1,0 +1,164 @@
+services:
+  # ============================================================
+  # PostgreSQL
+  # ============================================================
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/init_databases.sql:/docker-entrypoint-initdb.d/01_init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # ============================================================
+  # Source API: REST-источник характеристик товаров
+  # ============================================================
+  source-api:
+    image: python:3.11-slim
+    working_dir: /app
+    volumes:
+      - ./src:/app/src
+      - ./data:/app/data
+    command: >
+      sh -c "pip install --no-cache-dir fastapi uvicorn pandas &&
+             python /app/src/mock_api.py"
+    ports:
+      - "8001:8001"
+
+  # ============================================================
+  # MLflow: tracking server + Model Registry
+  # ============================================================
+  mlflow:
+    image: python:3.11-slim
+    working_dir: /app
+    environment:
+      MLFLOW_BACKEND_STORE_URI: postgresql://mlflow:mlflow@postgres:5432/mlflow
+      MLFLOW_DEFAULT_ARTIFACT_ROOT: /mlruns
+    volumes:
+      - mlflow_data:/mlruns
+    command:
+      - /bin/sh
+      - -c
+      - |
+        python -m pip install --no-cache-dir \
+          'mlflow==2.18.0' \
+          'sqlalchemy>=2.0,<2.1' \
+          psycopg2-binary
+        exec python -m mlflow server \
+          --host 0.0.0.0 \
+          --port 5000 \
+          --backend-store-uri postgresql://mlflow:mlflow@postgres:5432/mlflow \
+          --artifacts-destination /mlruns \
+          --serve-artifacts
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:5000/version')"
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 15s
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ============================================================
+  # Airflow init: одноразовая миграция БД + создание admin
+  # Запуск от root — чтобы иметь доступ к /mlruns и мигрировать БД
+  # ============================================================
+  airflow-init:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    user: "0:0"
+    environment:
+      GIT_PYTHON_REFRESH: quiet
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__SECRET_KEY: change-me
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: dwh
+      POSTGRES_USER: dwh
+      POSTGRES_PASSWORD: dwh
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      SOURCE_API_URL: http://source-api:8001/products
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - ./ml:/opt/airflow/ml
+      - ./data:/opt/airflow/data
+      - ./sql:/opt/airflow/sql
+      - ./config:/opt/airflow/config
+    command: >
+      bash -c "airflow db migrate &&
+               (airflow users create --username admin --password admin
+               --firstname Admin --lastname User --role Admin
+               --email admin@example.com || true)"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ============================================================
+  # Airflow: scheduler + webserver
+  # Запуск от root — чтобы писать в общий volume /mlruns
+  # Webserver явно слушает 0.0.0.0:8080 — иначе ERR_EMPTY_RESPONSE
+  # ============================================================
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    user: "0:0"
+    environment:
+      GIT_PYTHON_REFRESH: quiet
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__SECRET_KEY: change-me
+      AIRFLOW__WEBSERVER__WEB_SERVER_HOST: "0.0.0.0"
+      AIRFLOW__WEBSERVER__WEB_SERVER_PORT: "8080"
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: "5432"
+      POSTGRES_DB: dwh
+      POSTGRES_USER: dwh
+      POSTGRES_PASSWORD: dwh
+      MLFLOW_TRACKING_URI: http://mlflow:5000
+      SOURCE_API_URL: http://source-api:8001/products
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./src:/opt/airflow/src
+      - ./ml:/opt/airflow/ml
+      - ./data:/opt/airflow/data
+      - ./sql:/opt/airflow/sql
+      - ./config:/opt/airflow/config
+      - mlflow_data:/mlruns
+    command: >
+      bash -c "airflow scheduler & airflow webserver --host 0.0.0.0 --port 8080"
+    ports:
+      - "8080:8080"
+    depends_on:
+      airflow-init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      mlflow:
+        condition: service_healthy
+      source-api:
+        condition: service_started
+
+volumes:
+  postgres_data:
+  mlflow_data:
